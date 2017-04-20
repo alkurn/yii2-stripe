@@ -1,0 +1,24 @@
+{
+    "name": "alkurn/yii2-stripe",
+    "type": "yii2-extension",
+    "description": "Yii2 Stripe Wrapper",
+    "keywords": ["yii2","stripe"],
+    "homepage": "https://github.com/alkurn/yii2-stripe",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Ganesh Alkurn",
+            "email": "ganesh.alkurn@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/jquery.payment": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+         "psr-4": {
+             "alkurn\\stripe\\": ""
+         }
+    }
+}
