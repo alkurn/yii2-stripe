@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright Victor Demin, 2014
- * @license https://github.com/ruskid/yii2-stripe/LICENSE
- * @link https://github.com/ruskid/yii2-stripe#readme
+ * @copyright Copyright Ganesh Alkurn, 2017
+ * @license https://github.com/alkurn/yii2-stripe/LICENSE
+ * @link https://github.com/alkurn/yii2-stripe#readme
  */
 
-namespace ruskid\stripe;
+namespace alkurn\stripe;
 
 use Yii;
 use yii\helpers\Html;
@@ -16,7 +16,7 @@ use yii\web\JsExpression;
  * Yii stripe custom form checkout class.
  * https://stripe.com/docs/checkout#integration-custom
  *
- * @author Victor Demin <demmbox@gmail.com>
+ * @author Ganesh Alkurn <ganesh.alkurn@gmail.com>
  */
 class StripeCheckoutCustom extends StripeCheckout {
 
