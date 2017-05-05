@@ -18,7 +18,8 @@
     "minimum-stability": "dev",
     "autoload": {
          "psr-4": {
-             "alkurn\\stripe\\": ""
+             "alkurn\\stripe\\": "",
+             "stripe/stripe-php":""
          }
     }
 }
