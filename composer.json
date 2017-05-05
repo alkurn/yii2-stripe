@@ -13,13 +13,14 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/jquery.payment": "*"
+        "bower-asset/jquery.payment": "*",
+        "stripe/stripe-php":"*"
     },
     "minimum-stability": "dev",
     "autoload": {
          "psr-4": {
-             "alkurn\\stripe\\": "",
-             "stripe/stripe-php":""
+             "alkurn\\stripe\\": ""
+             
          }
     }
 }
