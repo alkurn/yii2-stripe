@@ -12,7 +12,7 @@ use Yii;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\Customer;
-
+use Stripe\Subscription;
     /**
  * Yii stripe component.
  *
@@ -28,13 +28,19 @@ class StripeRecurring extends Stripe {
         $customer = Customer::create(array(
                 'source'  => $request['token'],
                 'email' => $request['email'],
-                'plan'  => $request['plan']
             )
         );
 
-        $request['customer']    =  $customer->id;
+        return Subscription::create(['customer' => $customer->id, 'plan'  => $request['plan']]);
+    }
 
-        return Charge::create($request);
+    public function cancelSubscription($subscription_id){
+
+        Stripe::setApiKey(Yii::$app->stripe->privateKey);
+
+        $sub = Subscription::retrieve($subscription_id);
+        return ($sub) ? $sub->cancel() : false;
+
     }
 
     
