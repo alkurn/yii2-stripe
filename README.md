@@ -136,7 +136,7 @@ use alkurn\stripe\StripeForm;
  ```php
  
  <?php
- use alkurn\stripe\StripeForm;
+ use alkurn\stripe\StripeConnect;
  
  
  $provider = new StripeConnect([
