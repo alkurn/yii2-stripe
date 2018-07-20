@@ -30,6 +30,12 @@ class Stripe extends \yii\base\Component {
     public $privateKey;
 
     /**
+     * @see Stripe
+     * @var string Stripe's private key
+     */
+    public $clientId;
+
+    /**
      * @see Init extension default
      */
     public function init() {
@@ -37,6 +43,9 @@ class Stripe extends \yii\base\Component {
             throw new Exception("Stripe's public key is not set.");
         } elseif (!$this->privateKey) {
             throw new Exception("Stripe's private key is not set.");
+        }
+        elseif (!$this->clientId) {
+            throw new Exception("Stripe's client id is not set.");
         }
         parent::init();
     }
