@@ -1,33 +1,45 @@
 {
-    "name": "alkurn/yii2-stripe",
-    "type": "yii2-extension",
-    "description": "Yii2 Stripe Wrapper",
-    "keywords": ["yii2","stripe", "oauth", "oauth2", "authorization", "authentication", "idp", "identity", "sso", "single sign on", "stripe", "stripe api"],
-    "homepage": "https://github.com/alkurn/yii2-stripe",
-    "license": "GNU",
-    "authors": [
-        {
-            "name": "Ganesh Alkurn",
-            "email": "ganesh.alkurn@gmail.com"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*",
-        "bower-asset/jquery.payment": "*",
-        "stripe/stripe-php":"*",
-        "league/oauth2-client": "^2.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "mockery/mockery": "~0.9",
-        "squizlabs/php_codesniffer": "~2.0",
-        "scrutinizer/ocular": "^1.1"
-    },
-    "minimum-stability": "dev",
-    "autoload": {
-         "psr-4": {
-             "alkurn\\stripe\\": ""
-             
-         }
+  "name": "alkurn/yii2-stripe",
+  "type": "yii2-extension",
+  "description": "Yii2 Stripe Wrapper",
+  "keywords": [
+    "yii2",
+    "stripe",
+    "oauth",
+    "oauth2",
+    "authorization",
+    "authentication",
+    "idp",
+    "identity",
+    "sso",
+    "single sign on",
+    "stripe",
+    "stripe api"
+  ],
+  "homepage": "https://github.com/alkurn/yii2-stripe",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ganesh Alkurn",
+      "email": "ganesh.alkurn@gmail.com"
     }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "bower-asset/jquery.payment": "*",
+    "stripe/stripe-php": "*",
+    "league/oauth2-client": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "mockery/mockery": "~0.9",
+    "squizlabs/php_codesniffer": "~2.0",
+    "scrutinizer/ocular": "^1.1"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "alkurn\\stripe\\": ""
+    }
+  }
 }
