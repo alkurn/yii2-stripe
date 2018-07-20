@@ -30,6 +30,7 @@ Add a new component in main.php
     'class' => 'alkurn\stripe\Stripe',
     'publicKey' => "pk_test_xxxxxxxxxxxxxxxxxxx",
     'privateKey' => "sk_test_xxxxxxxxxxxxxxxxxx",
+    'ClientId' => "ca_xxxxxxxxxxxxxxxxxx",
 ],
 ...
 
@@ -129,5 +130,60 @@ use alkurn\stripe\StripeForm;
  <?= Html::submitButton('Submit'); ?>
  
  <?php StripeForm::end(); ?>
+ 
+ ```
+ 
+ ```php
+ 
+ <?php
+ use alkurn\stripe\StripeForm;
+ 
+ 
+ $provider = new StripeConnect([
+     'clientId'          => '{stripe-client-id}',
+     'clientSecret'      => '{stripe-client-secret}',
+     'redirectUri'       => 'https://example.com/callback-url',
+ ]);
+ 
+ if (!isset($_GET['code'])) {
+ 
+     // If we don't have an authorization code then get one
+     $authUrl = $provider->getAuthorizationUrl();
+     $_SESSION['oauth2state'] = $provider->getState();
+     header('Location: '.$authUrl);
+     exit;
+ 
+ // Check given state against previously stored one to mitigate CSRF attack
+ } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+ 
+     unset($_SESSION['oauth2state']);
+     exit('Invalid state');
+ 
+ } else {
+ 
+     // Try to get an access token (using the authorization code grant)
+     $token = $provider->getAccessToken('authorization_code', [
+         'code' => $_GET['code']
+     ]);
+ 
+     // Optional: Now you have a token you can look up a users profile data
+     try {
+ 
+         // We got an access token, let's now get the user's details
+         $account = $provider->getResourceOwner($token);
+ 
+         // Use these details to create a new profile
+         printf('Hello %s!', $account->getDisplayName());
+ 
+     } catch (Exception $e) {
+ 
+         // Failed to get user details
+         exit('Oh dear...');
+     }
+ 
+     // Use this to interact with an API on the users behalf
+     echo $token->getToken();
+ }
+ 
 ```
 
