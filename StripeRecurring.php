@@ -24,22 +24,18 @@ class StripeRecurring extends Stripe {
     public function createCharge($request){
 
         Stripe::setApiKey(Yii::$app->stripe->privateKey);
+        $customer = Customer::create(['source'  => $request['token'], 'email' => $request['email']]);
+        return Subscription::create([ 'customer' => $customer->id, 'items'  => $request['items'] ]);
 
-        $customer = Customer::create(array(
-                'source'  => $request['token'],
-                'email' => $request['email'],
-            )
-        );
 
-        return Subscription::create(['customer' => $customer->id, 'plan'  => $request['plan']]);
     }
 
     public function cancelSubscription($subscription_id){
 
         Stripe::setApiKey(Yii::$app->stripe->privateKey);
-
         $sub = Subscription::retrieve($subscription_id);
         return ($sub) ? $sub->cancel() : false;
+
 
     }
 
