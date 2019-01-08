@@ -25,7 +25,22 @@ class StripeRecurring extends Stripe {
 
         Stripe::setApiKey(Yii::$app->stripe->privateKey);
         $customer = Customer::create(['source'  => $request['token'], 'email' => $request['email']]);
-        return Subscription::create([ 'customer' => $customer->id, 'items'  => $request['items'] ]);
+        $orgRequest = [];
+
+        if($request['customer']){
+            $orgRequest['customer'] = $customer->id;
+        }
+
+        if($request['trial_from_plan']){
+            $orgRequest['trial_from_plan'] = $request['trial_from_plan'];
+        }
+        if($request['items']){
+            $orgRequest['trial_from_plan'] = $request['items'];
+        }
+
+        /*['customer' => $customer->id, 'trial_from_plan' => true, 'items'  => $request['items']]*/
+
+        return Subscription::create($orgRequest);
 
 
     }
