@@ -68,7 +68,7 @@ class StripeCheckout extends \yii\base\Widget {
      * @see Stripe. The currency of the amount (3-letter ISO code). The default is USD.
      * @var string currency
      */
-    public $currency;
+    public $currency = 'USD';
 
     /**
      * @see Stripe. The text to be shown on the default blue button.
