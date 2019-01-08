@@ -55,7 +55,6 @@ class StripeRecurring extends Stripe
                 ],
             ],
         ]);
-
         return ($res) ? true : false;
     }
 
