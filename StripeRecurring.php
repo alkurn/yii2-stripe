@@ -25,17 +25,27 @@ class StripeRecurring extends Stripe
 
     public function createCharge($request)
     {
-
         Stripe::setApiKey(Yii::$app->stripe->privateKey);
         $customer = Customer::create(['source' => $request['token'], 'email' => $request['email']]);
+
+        if(isset($request['setup_fee'])){
+            $this->setupFee($customer->id, $request['setup_fee']);
+        }
+
         return Subscription::create(['customer' => $customer->id, 'items' => $request['items']]);
-
-
     }
 
+    public function setupFee($customer_id, $fee){
+
+        return \Stripe\InvoiceItem::create([
+            "customer" => $customer_id,
+            "amount" => (int) $fee,
+            "currency" => "usd",
+            "description" => "One-time setup fee"
+        ]);
+    }
     public function cancelSubscription($subscription_id)
     {
-
         Stripe::setApiKey(Yii::$app->stripe->privateKey);
         $sub = Subscription::retrieve($subscription_id);
         return ($sub) ? $sub->cancel() : false;
@@ -57,7 +67,5 @@ class StripeRecurring extends Stripe
         ]);
         return ($res) ? true : false;
     }
-
-
 }
 
