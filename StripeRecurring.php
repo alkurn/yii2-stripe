@@ -31,13 +31,13 @@ class StripeRecurring extends Stripe
         $orgRequest = [];
 
         if($customer){
-
             $orgRequest['customer'] = $customer->id;
-            if($request['trial_from_plan']){
+
+            if(isset($request['trial_from_plan'])){
                 $orgRequest['trial_from_plan'] = true;
             }
 
-            if($request['items']){
+            if(isset($request['items'])){
                 $orgRequest['items'] = $request['items'];
             }
 
