@@ -20,8 +20,8 @@ class StripeConnect extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://connect.stripe.com/oauth/authorize';
-        //return 'http://connect.stripe.com/express/oauth/authorize';
+        //return 'https://connect.stripe.com/oauth/authorize';
+        return 'http://connect.stripe.com/express/oauth/authorize';
     }
 
     /**
