@@ -31,16 +31,14 @@ class StripeRecurring extends Stripe
         $orgRequest = [];
 
         if($customer){
-            $orgRequest['customer'] = $customer->id;
 
+            $orgRequest['customer'] = $customer->id;
             if(isset($request['trial_from_plan'])){
                 $orgRequest['trial_from_plan'] = true;
             }
-
             if(isset($request['items'])){
                 $orgRequest['items'] = $request['items'];
             }
-
             if(isset($request['setup_fee'])){
                 $this->setupFee($customer->id, $request['setup_fee']);
             }
@@ -57,6 +55,13 @@ class StripeRecurring extends Stripe
             "currency" => "usd",
             "description" => "One-time setup fee"
         ]);
+    }
+
+    public function subscriptionStatus($subscription_id)
+    {
+        Stripe::setApiKey(Yii::$app->stripe->privateKey);
+        $sub = Subscription::retrieve($subscription_id);
+        return $sub;
     }
     public function cancelSubscription($subscription_id)
     {
