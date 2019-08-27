@@ -36,6 +36,14 @@ class Stripe extends \yii\base\Component {
     public $clientId;
 
     /**
+     * @see Stripe
+     * @var string Stripe's redirect Url
+     */
+    public $redirectUri;
+
+
+
+    /**
      * @see Init extension default
      */
     public function init() {

@@ -133,7 +133,6 @@ class StripeConnect extends AbstractProvider
                 ]),
             ]
         );
-
         return $this->getParsedResponse($request);
     }
 }
