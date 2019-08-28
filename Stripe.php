@@ -41,8 +41,6 @@ class Stripe extends \yii\base\Component {
      */
     public $redirectUri;
 
-
-
     /**
      * @see Init extension default
      */
