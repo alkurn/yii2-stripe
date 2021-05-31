@@ -26,7 +26,9 @@ class StripeCharge extends Stripe {
         return Charge::create($request);
     }
 
-
-
+    public function retriveCharge($id){
+        Stripe::setApiKey(Yii::$app->stripe->privateKey);
+        return Charge::retrieve($id);
+    }
 }
 
