@@ -36,17 +36,23 @@ class Stripe extends \yii\base\Component {
     public $clientId;
 
     /**
+     * @see Stripe
+     * @var string Stripe's redirect Url
+     */
+    public $redirectUri;
+
+    /**
      * @see Init extension default
      */
     public function init() {
         if (!$this->publicKey) {
             throw new Exception("Stripe's public key is not set.");
-        } elseif (!$this->privateKey) {
+        }
+
+        if (!$this->privateKey) {
             throw new Exception("Stripe's private key is not set.");
         }
-        elseif (!$this->clientId) {
-            throw new Exception("Stripe's client id is not set.");
-        }
+
         parent::init();
     }
 
