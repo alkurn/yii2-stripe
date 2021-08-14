@@ -30,7 +30,7 @@ Add a new component in main.php
     'class' => 'alkurn\stripe\Stripe',
     'publicKey' => "pk_test_xxxxxxxxxxxxxxxxxxx",
     'privateKey' => "sk_test_xxxxxxxxxxxxxxxxxx",
-    'ClientId' => "ca_xxxxxxxxxxxxxxxxxx",
+    'ClientId' => "ca_xxxxxxxxxxxxxxxxxx", //Optional
 ],
 ...
 
