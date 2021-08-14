@@ -39,6 +39,9 @@ class StripeRecurring extends Stripe
             if(isset($request['items'])){
                 $orgRequest['items'] = $request['items'];
             }
+            if(isset($request['coupon'])){
+                $orgRequest['coupon'] = $request['coupon'];
+            }
             if(isset($request['setup_fee'])){
                 $this->setupFee($customer->id, $request['setup_fee']);
             }
